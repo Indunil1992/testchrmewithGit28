@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "testchrmewithGit28/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n    s3.listObjects({\n        'Bucket': 'as2-test-lahiru',\n        'MaxKeys': 10,\n        'Prefix': ''\n    }).promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,7 +30,36 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [
+          {
+            "resourceName": "apigusEast1TestAPItestany",
+            "config": {}
+          },
+          {
+            "resourceName": "s3induniltrigger",
+            "config": {
+              "type": "s3:ObjectCreated:*",
+              "keyPrefix": "",
+              "keySuffix": ""
+            }
+          }
+        ],
+        "testCases": {
+          "01f44431-21cc-47a4-8e5d-4db28e4ca548": {
+            "id": "01f44431-21cc-47a4-8e5d-4db28e4ca548",
+            "name": "Test event sample",
+            "functionId": "9e398dcf-4666-4922-b1ca-bf157d8c202a",
+            "event": "{\r\n    \"operation\": \"echo\",\r\n    \"message\": \"Hello world!\"\r\n}",
+            "eventTemplate": "mobile-backend-echo"
+          },
+          "c006fbce-0cf0-4547-9575-a831d74d1338": {
+            "id": "c006fbce-0cf0-4547-9575-a831d74d1338",
+            "name": "Test event",
+            "functionId": "9e398dcf-4666-4922-b1ca-bf157d8c202a",
+            "event": "{\r\n    \"key11\": \"value10\",\r\n    \"key22\": \"value20\",\r\n    \"key33\": \"value30\"\r\n}",
+            "eventTemplate": "hello-world"
+          }
+        }
       }
     },
     "rootNode": "4c2e2104-2b0b-4a98-b463-d8f1d5b39f7e",
@@ -38,10 +67,129 @@
       "9e398dcf-4666-4922-b1ca-bf157d8c202a"
     ],
     "currentFileId": "9e398dcf-4666-4922-b1ca-bf157d8c202a",
-    "resources": {},
+    "resources": {
+      "apigusEast1TestAPItestany": {
+        "name": "apigusEast1TestAPItestany",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/newchange/test": "k6pdhn",
+            "/newchange": "q1ox7l",
+            "/testWithSlash": "q4m4g1",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/newchange/test",
+          "resourceName": "test",
+          "resourceId": "k6pdhn",
+          "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "Prod",
+          "stageDeploymentId": "e6ip3h",
+          "mode": 1
+        }
+      },
+      "s3induniltrigger": {
+        "name": "s3induniltrigger",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "indunil.trigger"
+          }
+        }
+      },
+      "s3as2TestLahiru": {
+        "name": "s3as2TestLahiru",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "as2-test-lahiru"
+          }
+        }
+      }
+    },
     "customTemplate": {
-      "dialect": null,
-      "definitions": null
+      "dialect": "CloudFormation",
+      "definitions": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "This template creates the stack for project testchrmewithGit28. Generated by Sigma",
+        "Outputs": {},
+        "Resources": {
+          "testchrmewithGit28lambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "FunctionName": "testchrmewithGit28lambda",
+              "Description": "Invokes functions defined in testchrmewithGit28/lambda.js in project testchrmewithGit28. Generated by Sigma.",
+              "Code": {
+                "S3Bucket": "com.sigma.test.318300609668.indunil.us-east-1",
+                "S3Key": "testchrmewithGit28/sigma_builds/build_1572244214601.zip"
+              },
+              "MemorySize": 128,
+              "Handler": "testchrmewithGit28/lambda.handler",
+              "Timeout": 60,
+              "Runtime": "nodejs8.10",
+              "Layers": [],
+              "TracingConfig": {
+                "Mode": "PassThrough"
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "testchrmewithGit28lambdaExecutionRole",
+                  "Arn"
+                ]
+              },
+              "Environment": {
+                "Variables": {
+                  "SIGMA_AWS_ACC_ID": "318300609668",
+                  "key2": "Val2",
+                  "key4": "val4",
+                  "key1": "Val1",
+                  "Key3": "val3"
+                }
+              }
+            }
+          },
+          "testchrmewithGit28lambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "ManagedPolicyArns": [
+                "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ],
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Action": [
+                      "sts:AssumeRole"
+                    ],
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
     },
     "envVariables": [
       {
@@ -96,6 +244,13 @@
           "name": "test",
           "version": "0.6.0",
           "language": "javascript"
+        },
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
         }
       }
     }
@@ -107,7 +262,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1572244028313
+    "lastSave": 1572246751118
   },
   "VCS_STATE": {
     "provider": "GitHub",
