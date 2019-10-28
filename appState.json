@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "testchrmewithGit28/lambda.js",
-        "code": "exports.handler = function (event, context, callback) {\n\n// indu\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "exports.handler = function (event, context, callback) {\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs10.x",
           "handler": "handler",
@@ -54,7 +54,15 @@
         },
         "customSecurityPolicy": {
           "Version": "2012-10-17",
-          "Statement": []
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Resource": "arn:aws:iot:us-east-1::/",
+              "Action": [
+                "*"
+              ]
+            }
+          ]
         }
       }
     },
@@ -267,7 +275,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1572251157611
+    "lastSave": 1572251410869
   },
   "VCS_STATE": {
     "provider": "GitHub",
