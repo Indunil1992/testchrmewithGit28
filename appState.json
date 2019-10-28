@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "testchrmewithGit28/lambda.js",
-        "code": "exports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "exports.handler = function (event, context, callback) {\n\n// indu\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs10.x",
           "handler": "handler",
@@ -54,34 +54,7 @@
         },
         "customSecurityPolicy": {
           "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Deny",
-              "Resource": "*",
-              "Action": [
-                "*"
-              ]
-            },
-            {
-              "Effect": "Allow",
-              "Resource": "*",
-              "Action": [
-                "*"
-              ]
-            },
-            {
-              "Effect": "Allow",
-              "Resource": "arn:aws:s3:::indunil.tri/",
-              "Action": [
-                "s3:ListObjects"
-              ]
-            },
-            {
-              "Effect": "Allow",
-              "Resource": "arn:aws:execute-api:us-east-1::///",
-              "Action": []
-            }
-          ]
+          "Statement": []
         }
       }
     },
@@ -294,7 +267,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1572249624144
+    "lastSave": 1572251157611
   },
   "VCS_STATE": {
     "provider": "GitHub",
