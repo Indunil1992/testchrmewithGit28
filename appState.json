@@ -59,6 +59,25 @@
             "event": "{\r\n    \"key11\": \"value10\",\r\n    \"key22\": \"value20\",\r\n    \"key33\": \"value30\"\r\n}",
             "eventTemplate": "hello-world"
           }
+        },
+        "customSecurityPolicy": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Deny",
+              "Resource": "*",
+              "Action": [
+                "*"
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Resource": "*",
+              "Action": [
+                "*"
+              ]
+            }
+          ]
         }
       }
     },
@@ -262,7 +281,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1572247990330
+    "lastSave": 1572248304502
   },
   "VCS_STATE": {
     "provider": "GitHub",
