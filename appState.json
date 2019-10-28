@@ -91,18 +91,23 @@
           "name": "npm-run-path",
           "version": "4.0.0",
           "language": "javascript"
+        },
+        "test": {
+          "name": "test",
+          "version": "0.6.0",
+          "language": "javascript"
         }
       }
     }
   },
   "PROJECT_META": {
     "projectName": "testchrmewithGit28",
-    "projectDescription": "",
+    "projectDescription": "test single user scenario,Git & chrme",
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1572242874466
+    "lastSave": 1572244028313
   },
   "VCS_STATE": {
     "provider": "GitHub",
