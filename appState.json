@@ -1,0 +1,114 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "4c2e2104-2b0b-4a98-b463-d8f1d5b39f7e": {
+        "id": "4c2e2104-2b0b-4a98-b463-d8f1d5b39f7e",
+        "parent": null,
+        "name": "testchrmewithGit28",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "9e398dcf-4666-4922-b1ca-bf157d8c202a"
+        ],
+        "isRemovable": false,
+        "filePath": "testchrmewithGit28"
+      },
+      "9e398dcf-4666-4922-b1ca-bf157d8c202a": {
+        "id": "9e398dcf-4666-4922-b1ca-bf157d8c202a",
+        "parent": "4c2e2104-2b0b-4a98-b463-d8f1d5b39f7e",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "testchrmewithGit28/lambda.js",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      }
+    },
+    "rootNode": "4c2e2104-2b0b-4a98-b463-d8f1d5b39f7e",
+    "openFiles": [
+      "9e398dcf-4666-4922-b1ca-bf157d8c202a"
+    ],
+    "currentFileId": "9e398dcf-4666-4922-b1ca-bf157d8c202a",
+    "resources": {},
+    "customTemplate": {
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "9e398dcf-4666-4922-b1ca-bf157d8c202a",
+        "varKey": "key1",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "key2",
+        "varValue": "Val2",
+        "shouldPersist": true,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "9e398dcf-4666-4922-b1ca-bf157d8c202a",
+        "varKey": "Key3",
+        "varValue": "val3",
+        "shouldPersist": true,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "key4",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "npm-run-path": {
+          "name": "npm-run-path",
+          "version": "4.0.0",
+          "language": "javascript"
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "testchrmewithGit28",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1572242874466
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "testchrmewithGit28",
+      "url": "https://github.com/Indunil1992/testchrmewithGit28"
+    }
+  }
+}
